@@ -3,13 +3,18 @@ import { createRouter, createWebHistory, Router, RouteRecordRaw } from 'vue-rout
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Home',
-    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
+    name: 'analyse',
+    component: () => import(/* webpackChunkName: "home" */ '../views/Analyse.vue')
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/fleet',
+    name: 'fleet',
+    component: () => import(/* webpackChunkName: "home" */ '../views/Analyse.vue')
+  },
+  {
+    path: '/connect',
+    name: 'connect',
+    component: () => import(/* webpackChunkName: "home" */ '../views/Analyse.vue')
   }
 ]
 
