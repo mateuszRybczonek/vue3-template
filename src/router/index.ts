@@ -9,12 +9,17 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/fleet',
     name: 'fleet',
-    component: () => import(/* webpackChunkName: "home" */ '../views/Analyse.vue')
+    component: () => import(/* webpackChunkName: "home" */ '../views/Fleet.vue')
   },
   {
     path: '/connect',
     name: 'connect',
-    component: () => import(/* webpackChunkName: "home" */ '../views/Analyse.vue')
+    component: () => import(/* webpackChunkName: "home" */ '../views/Connect.vue')
+  },
+  {
+    path: '/alerts',
+    name: 'alerts',
+    component: () => import(/* webpackChunkName: "home" */ '../views/Connect.vue')
   }
 ]
 
