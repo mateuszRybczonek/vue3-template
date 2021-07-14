@@ -1,5 +1,5 @@
 <template>
-  <div class="relative sm:pb-0 lg:mt-12 lg:ml-20 lg:mr-10">
+  <div class="relative sm:pb-0 mt-12 ml-4 mr-4 lg:ml-20 lg:mr-10">
     <div class="relative pb-5 border-b border-gray-200">
       <div class="md:flex md:items-center md:justify-between">
         <h3 class="text-2xl leading-6 font-medium text-gray-900">
@@ -166,25 +166,25 @@
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
               <tr
-                v-for="transaction in transactions"
-                :key="transaction.id"
+                v-for="view in views"
+                :key="view.id"
                 class="bg-white"
               >
                 <td class="max-w-0 w-full px-6 py-4 whitespace-nowrap text-base text-gray-900">
                   <div class="flex">
                     <a
-                      :href="transaction.href"
+                      :href="view.href"
                       class="group inline-flex space-x-2 truncate text-base"
                     >
                       <p class="text-gray-900 truncate group-hover:text-gray-500 font-semibold">
-                        {{ transaction.name }}
+                        {{ view.name }}
                       </p>
                     </a>
                   </div>
                 </td>
                 <td class="hidden px-6 py-4 whitespace-nowrap text-base text-gray-500 md:block">
                   <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-base capitalize bg-gray-100 text-gray-800">
-                    {{ transaction.category }}
+                    {{ view.category }}
                   </span>
                 </td>
                 <td class="px-6 py-4 text-right whitespace-nowrap text-base text-gray-500">
@@ -302,12 +302,131 @@
         </div>
       </div>
     </div>
+
+    <!-- Actions panel -->
+    <section
+      class='mt-20'
+      aria-labelledby="quick-links-title"
+    >
+      <h2 class="text-gray-500 text-base font-medium uppercase tracking-wide">Advanced</h2>
+      <h2 class="mt-2 text-gray-400 text-xl tracking-wide">A short description of this tier and it's benefits.</h2>
+      <div class="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2 xl:grid-cols-4">
+        <div
+            v-for="(action, actionIdx) in actions"
+            :key="action.name"
+            class="mt-4 rounded-lg bg-gray-200 overflow-hidden shadow divide-y divide-gray-200 sm:divide-y-0 sm:gap-px">
+          <div
+              :class="[actionIdx === 0 ? 'rounded-tl-lg rounded-tr-lg sm:rounded-tr-none' : '', actionIdx === 1 ? 'sm:rounded-tr-lg' : '', actionIdx === actions.length - 2 ? 'sm:rounded-bl-lg' : '', actionIdx === actions.length - 1 ? 'rounded-bl-lg rounded-br-lg sm:rounded-bl-none' : '', 'relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-cyan-500']"
+          >
+            <div>
+            <span :class="[action.iconBackground, action.iconForeground, 'rounded-lg inline-flex p-3 ring-4 ring-white']">
+              <component
+                  :is="action.icon"
+                  class="h-10 w-10"
+                  aria-hidden="true"
+              />
+            </span>
+            </div>
+            <div class="mt-8">
+              <h3 class="text-2xl font-medium">
+                <a
+                  :href="action.href"
+                  class="focus:outline-none"
+                >
+                  <!-- Extend touch target to entire panel -->
+                  <span
+                    class="absolute inset-0"
+                    aria-hidden="true"
+                  />
+                  {{ action.name }}
+                </a>
+              </h3>
+              <p class="mt-2 text-lg text-gray-400">
+                Doloribus dolores nostrum quia qui natus officia quod et dolorem. Sit repellendus qui ut at blanditiis et quo et molestiae.
+              </p>
+            </div>
+            <span
+                class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-gray-400"
+                aria-hidden="true"
+            >
+            <svg
+                class="h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+            >
+              <path d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 102 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
+            </svg>
+          </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+        class='mt-20'
+        aria-labelledby="quick-links-title"
+    >
+      <h2 class="text-gray-500 text-base font-medium uppercase tracking-wide">Premium</h2>
+      <h2 class="mt-2 text-gray-400 text-xl tracking-wide">A short description of this tier and it's benefits.</h2>
+      <div class="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2 xl:grid-cols-4">
+        <div
+            v-for="(action, actionIdx) in actions"
+            :key="action.name"
+            class="mt-4 rounded-lg bg-gray-200 overflow-hidden shadow divide-y divide-gray-200 sm:divide-y-0 sm:gap-px">
+          <div
+              :class="[actionIdx === 0 ? 'rounded-tl-lg rounded-tr-lg sm:rounded-tr-none' : '', actionIdx === 1 ? 'sm:rounded-tr-lg' : '', actionIdx === actions.length - 2 ? 'sm:rounded-bl-lg' : '', actionIdx === actions.length - 1 ? 'rounded-bl-lg rounded-br-lg sm:rounded-bl-none' : '', 'relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-cyan-500']"
+          >
+            <div>
+            <span :class="[action.iconBackground, action.iconForeground, 'rounded-lg inline-flex p-3 ring-4 ring-white']">
+              <component
+                  :is="action.icon"
+                  class="h-10 w-10"
+                  aria-hidden="true"
+              />
+            </span>
+            </div>
+            <div class="mt-8">
+              <h3 class="text-2xl font-medium">
+                <a
+                    :href="action.href"
+                    class="focus:outline-none"
+                >
+                  <!-- Extend touch target to entire panel -->
+                  <span
+                      class="absolute inset-0"
+                      aria-hidden="true"
+                  />
+                  {{ action.name }}
+                </a>
+              </h3>
+              <p class="mt-2 text-lg text-gray-400">
+                Doloribus dolores nostrum quia qui natus officia quod et dolorem. Sit repellendus qui ut at blanditiis et quo et molestiae.
+              </p>
+            </div>
+            <span
+                class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-gray-400"
+                aria-hidden="true"
+            >
+            <svg
+                class="h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+            >
+              <path d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 102 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
+            </svg>
+          </span>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
 import { ref } from 'vue'
-import { PlusIcon, DotsVerticalIcon } from '@heroicons/vue/solid'
+import { PlusIcon, DotsVerticalIcon, BadgeCheckIcon } from '@heroicons/vue/solid'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 
 const filters = [
@@ -325,7 +444,7 @@ const recentViews = [
   { name: 'View D', initials: 'VD', href: '#', backgroundColorClass: 'bg-green-500' }
 ]
 
-const transactions = [
+const views = [
   {
     id: 1,
     name: 'View A',
@@ -364,6 +483,37 @@ const transactions = [
   }
 ]
 
+const actions = [
+  {
+    icon: BadgeCheckIcon,
+    name: 'View name',
+    href: '#',
+    iconForeground: 'text-yellow-500',
+    iconBackground: 'bg-yellow-50'
+  },
+  {
+    icon: BadgeCheckIcon,
+    name: 'View name',
+    href: '#',
+    iconForeground: 'text-yellow-500',
+    iconBackground: 'bg-yellow-50'
+  },
+  {
+    icon: BadgeCheckIcon,
+    name: 'View name',
+    href: '#',
+    iconForeground: 'text-yellow-500',
+    iconBackground: 'bg-yellow-50'
+  },
+  {
+    icon: BadgeCheckIcon,
+    name: 'View name',
+    href: '#',
+    iconForeground: 'text-yellow-500',
+    iconBackground: 'bg-yellow-50'
+  }
+]
+
 export default {
   name: 'AnalyseView',
 
@@ -373,7 +523,8 @@ export default {
     MenuItem,
     MenuItems,
     PlusIcon,
-    DotsVerticalIcon
+    DotsVerticalIcon,
+    BadgeCheckIcon
   },
 
   setup() {
@@ -388,7 +539,8 @@ export default {
       filters,
       onTabClicked,
       recentViews,
-      transactions
+      views,
+      actions
     }
   }
 }

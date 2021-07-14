@@ -1,12 +1,14 @@
 <template>
-  <div class="min-h-screen gradient-gray">
+  <div class="min-h-screen gradient-gray pb-20">
     <Navigation />
     <router-view v-slot="{ Component }">
       <transition
           name="fade"
           mode="out-in"
       >
-        <component :is="Component" />
+        <component
+          :is="Component"
+        />
       </transition>
     </router-view>
   </div>
