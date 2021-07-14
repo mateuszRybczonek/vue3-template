@@ -2,7 +2,7 @@
   <Disclosure
     v-slot="{ open }"
     as="nav"
-    class="bg-white shadow"
+    class="bg-white shadow z-50"
   >
     <div class="px-2 sm:px-4 lg:px-8">
       <div class="flex justify-between h-16">
@@ -43,7 +43,7 @@
             <div class="hidden lg:ml-4 lg:flex lg:items-center">
               <Menu
                   as="div"
-                  class="mr-6 relative flex-shrink-0"
+                  class="mr-6 relative flex-shrink-0 z-50"
               >
                 <div>
                   <MenuButton class="text-gray-500 text-base group bg-white rounded-md inline-flex items-center hover:text-gray-900 focus:outline-none">
@@ -123,7 +123,7 @@
 
           <Menu
             as="div"
-            class="ml-4 relative flex-shrink-0"
+            class="ml-4 relative flex-shrink-0 z-50"
           >
             <div>
               <MenuButton class="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
